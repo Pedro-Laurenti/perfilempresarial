@@ -14,10 +14,10 @@ const Início = () => {
             <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-            <meta property="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta property="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta name="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta name="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta property="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta property="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta name="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta name="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
 
             <meta property="og:site_name" content="Teste Perfil Empresarial | CEO Glauco" />
             <meta property="site_name" content="Teste Perfil Empresarial | CEO Glauco" />
@@ -44,19 +44,19 @@ const Início = () => {
             <meta name='og:subject' content='Teste Perfil Empresarial | CEO Glauco' />
             <meta name='subject' content='Teste Perfil Empresarial | CEO Glauco' />
 
-            <meta property="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta property="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta name="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta name="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta property="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta property="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta name="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta name="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
 
-            <meta property="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta property="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.png" />
-            <meta property="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta property="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.png" />
-            <meta name="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta name="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.png" />
-            <meta name="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.png" />
-            <meta name="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.png" />
+            <meta property="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta property="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
+            <meta property="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta property="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
+            <meta name="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta name="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
+            <meta name="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+            <meta name="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
 
             <title>Análise de Perfil Empresarial</title>
         </Head>
