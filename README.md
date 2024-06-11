@@ -251,6 +251,8 @@ perfilempresarial/
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](/LICENSE) para obter detalhes.
 
 
+
+
 </p>
 
 </details>
@@ -259,4 +261,8 @@ Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](/
 ---
 
 Este projeto foi desenvolvido para a empresa **Ceo Glauco ®** em junho de 2024
+
+<br />
+
+
 *This project was developed to the enterprise **Ceo Glauco ®** in June - 2024*
