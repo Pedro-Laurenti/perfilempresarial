@@ -3,13 +3,17 @@ import {BiArrowToRight} from 'react-icons/bi';
 import {Link} from 'react-router-dom';
 import { BsWhatsapp } from 'react-icons/bs';
 import Head from "next/head"
+import config from '../../package.json';
 
 const Início = () => {
+
+    const CURRENT_YEAR = new Date().getFullYear();
+
     return (
 
         <div className='relative w-full min-h-screen text-white'>
 
-<Head>
+        <Head>
             <meta charset="UTF-8"/>
             <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -82,6 +86,25 @@ const Início = () => {
                     <MultiStepForm/>
                 </div>
 
+                <div className='w-full border-gradient' />
+
+                <Link to="/personalidades" className='w-full'>
+                    <div className='grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-20 px-5 md:px-40 items-center py-40 hover:bg-slate-950'>
+                        <div className='flex md:flex-col flex-row'>
+                            <div className='text-sky-500 font-black text-2xl'>
+                                <code>02.</code>
+                            </div>
+                            <div className='font-black text-2xl'>Tipos:</div>
+                        </div>
+                        <div className='text-white font-medium text-4xl col-span-2'>Sobre cada personalidade</div>
+                        <div className='w-full flex justify-end'>
+                            <BiArrowToRight className='w-full h-16 fill-sky-400 hover:fill-sky-50'></BiArrowToRight>
+                        </div> 
+                    </div>
+                </Link>
+
+                
+
                 <div className='text-center px-5 md:px-40 py-20 w-full bg-sky-500 flex flex-col justify-center items-center text-2xl'>
                     Entre no nosso grupo para expandir sua network e receber atualizações importantes!
                     <Link to="https://chat.whatsapp.com/Dh5Dx3xHbUOIqe5OHREE9t" target="_blank">
@@ -89,17 +112,13 @@ const Início = () => {
                     </Link>
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-20 mx-5 md:mx-40 items-center my-40'>
-                    <div className='flex md:flex-col flex-row'>
-                        <div className='text-sky-500 font-black text-2xl'>
-                            <code>02.</code>
-                        </div>
-                        <div className='font-black text-2xl'>Tipos:</div>
+                <div className='text-center px-5 md:px-40 py-1 w-full bg-sky-950 flex flex-row justify-between items-center'>
+                    <div>
+                    &copy; {CURRENT_YEAR} - Ceo Glauco
                     </div>
-                    <div className='text-white font-medium text-4xl col-span-2'>Sobre cada personalidade</div>
-                    <Link to="/personalidades" className='w-full flex justify-end'>
-                        <BiArrowToRight className='w-full h-16 fill-sky-400 hover:fill-sky-50'></BiArrowToRight>
-                    </Link>
+                    <div>
+                    v. {config.version}
+                    </div>
                 </div>
             </div>
             <svg
