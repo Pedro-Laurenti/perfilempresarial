@@ -1,5 +1,5 @@
-import {useState, useRef} from 'react';
-import {BsArrowBarLeft, BsArrowBarRight, BsDownload} from 'react-icons/bs';
+import { useState, useRef } from 'react';
+import { BsArrowBarLeft, BsArrowBarRight, BsDownload } from 'react-icons/bs';
 import {
     Chart as ChartJS,
     RadialLinearScale,
@@ -9,21 +9,21 @@ import {
     Tooltip,
     Legend
 } from 'chart.js';
-import {Radar} from 'react-chartjs-2';
-import {Link} from 'react-router-dom';
+import { Radar } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import aguia from "../../assets/aguia.jpg"
 import gato from "../../assets/gato.jpg"
 import lobo from "../../assets/lobo.jpg"
 import tubarao from "../../assets/tubarao.jpg"
+import { FaCat, FaDog, FaFeather,  } from 'react-icons/fa';
+import { GiSharkFin } from "react-icons/gi";
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 const MultiStepForm = () => {
-    const [page,
-        setPage] = useState(1);
-    const [formData,
-        setFormData] = useState({firstName: '', lastName: '', answers: {}});
+    const [page, setPage] = useState(1);
+    const [formData, setFormData] = useState({ firstName: '', lastName: '', answers: {} });
     const chartRef = useRef(null);
 
     const questions = [
@@ -208,17 +208,29 @@ const MultiStepForm = () => {
         'Se você não tem condições de competir, não compita': 'Tubarão'
     };
 
+    const summaries = {
+        Águia: {
+            text: "Você é uma pessoa idealista, criativa e visionária. Gosta de explorar novas rotas e valoriza a liberdade e a inovação.",
+            image: <FaFeather size={64} />  // Adicione tamanho ou outras propriedades conforme necessário
+        },
+        Gato: {
+            text: "Você é uma pessoa divertida, espiritual e benéfica. Valoriza as memórias e a companhia das pessoas ao seu redor.",
+            image: <FaCat size={64} />
+        },
+        Lobo: {
+            text: "Você é uma pessoa confiável, meticulosa e previsível. Planejar e seguir regras é algo natural para você.",
+            image: <FaDog size={64} />
+        },
+        Tubarão: {
+            text: "Você é uma pessoa focada, determinada e persistente. Gosta de estar na liderança e alcançar metas.",
+            image: <GiSharkFin size={64} />
+        }
+    };
+
     const handleNext = () => {
         if (page === 1 && (!formData.firstName || !formData.lastName)) {
             alert('Por favor, preencha todos os campos.');
             return;
-        }
-        if (page > 1 && page <= questions.length + 1) {
-            const currentQuestionIndex = page - 2;
-            if (!formData.answers[currentQuestionIndex] || formData.answers[currentQuestionIndex].length === 0) {
-                alert('Por favor, selecione pelo menos uma opção.');
-                return;
-            }
         }
         setPage(page + 1);
     };
@@ -239,10 +251,7 @@ const MultiStepForm = () => {
             const currentAnswers = prevState.answers[questionIndex] || [];
             const newAnswers = currentAnswers.includes(option)
                 ? currentAnswers.filter((answer) => answer !== option)
-                : [
-                    ...currentAnswers,
-                    option
-                ];
+                : [...currentAnswers, option];
 
             return {
                 ...prevState,
@@ -253,7 +262,6 @@ const MultiStepForm = () => {
             };
         });
     };
-
     const calculateResults = () => {
         const groupScores = {
             Águia: 0,
@@ -262,24 +270,19 @@ const MultiStepForm = () => {
             Tubarão: 0
         };
 
-        Object
-            .values(formData.answers)
-            .forEach((answers) => {
-                answers.forEach((answer) => {
-                    const group = optionGroupMapping[answer];
-                    if (group) {
-                        groupScores[group]++;
-                    }
-                });
+        Object.values(formData.answers).forEach((answers) => {
+            answers.forEach((answer) => {
+                const group = optionGroupMapping[answer];
+                if (group) {
+                    groupScores[group]++;
+                }
             });
+        });
 
-        const totalAnswers = Object
-            .values(formData.answers)
-            .reduce((total, answers) => total + answers.length, 0);
+        const totalAnswers = Object.values(formData.answers).reduce((total, answers) => total + answers.length, 0);
 
         const groupPercentages = {};
-        for (const [group,
-            score]of Object.entries(groupScores)) {
+        for (const [group, score] of Object.entries(groupScores)) {
             groupPercentages[group] = (score / totalAnswers) * 100;
         }
 
@@ -301,12 +304,10 @@ const MultiStepForm = () => {
         ]
     };
 
-    const options = {
-        // Adicione opções de configuração aqui, se necessário
-    };
+    const options = {};
 
     const progressBarStyle = {
-        width: `${ ((page - 1) / (questions.length + 1)) * 100}%`
+        width: `${((page - 1) / (questions.length + 1)) * 100}%`
     };
 
     const handleSave = () => {
@@ -318,6 +319,20 @@ const MultiStepForm = () => {
                 link.click();
             });
         }
+    };
+
+    const highestScoringGroup = Object.keys(results).reduce((a, b) => results[a] > results[b] ? a : b);
+
+    const sortedResults = Object.entries(results).sort(([, a], [, b]) => b - a);
+    const topGroups = sortedResults.filter(([, percentage]) => percentage === sortedResults[0][1]);
+
+    const getTopGroups = () => {
+        const results = calculateResults();
+        const highestScore = Math.max(...Object.values(results));
+        const topGroups = Object.entries(results)
+            .filter(([group, score]) => score === highestScore)
+            .map(([group]) => group);
+        return topGroups;
     };
 
     return (
@@ -420,27 +435,43 @@ const MultiStepForm = () => {
                         <div>
                             <h2 className='text-2xl text-sky-500'>Parabéns, {formData.firstName}!</h2>
                             <h2 className='text-2xl text-white mb-20'>Concluimos o quiz de 25 perguntas!</h2>
-                            <h2 className='text-xl text-white mb-5'>Veja abaixo o seu resultado:</h2>
-                            {Object
-                                .entries(calculateResults())
-                                .map(([group, percentage]) => (
-                                    <li key={group} className="mb-4">{group}: {percentage.toFixed(2)}
-                                        %</li>
-                                ))}
 
-                            <p className='text-xl text-white mb-2 mt-20'>Quer salvar o resultado?</p>
-
-                            <button
-                                type='button'
-                                onClick={handleSave}
-                                className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-sky-500">
-                                Baixar gráfico
-                                <BsDownload/>
+                            <div>
+                                <div className="w-full flex flex-row items-center justify-center">
+                                    {topGroups.map(([group]) => (
+                                        <div className=' text-center gap-5'>
+                                            <div key={group} className='border-2 border-sky-50 rounded-full p-4'>
+                                                {summaries[group].image}
+                                            </div>
+                                            {group}
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className='mt-5'>
+                                    {topGroups.map(([group]) => (
+                                        <div key={group}>
+                                            <li className="text-left">{summaries[group].text}</li>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <Link to={"/personalidades"} className="bg-slate-950/20 border border-white/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-gray-600 mt-10">
+                                    Saiba mais de cada personalidade
+                            </Link>
+                            <button onClick={handlePrevious} className="bg-slate-950/20 border border-white/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-gray-600 mt-10">
+                                <BsArrowBarLeft/>
                             </button>
-
                         </div>
-                        <div ref={chartRef}>
-                            <Radar data={data} options={options} className='bg-white p-20 rounded-xl'/>
+                        <div className='flex flex-col items-center'>
+                            <Radar
+                                data={data}
+                                options={options}
+                                ref={chartRef}
+                                className="h-full bg-sky-50 rounded-2xl"/>
+                            <button
+                                onClick={handleSave}
+                                className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-5 items-center hover:bg-sky-500 mt-5">Baixar gráfico
+                                <BsDownload/></button>
                         </div>
                     </div>
                 )}
