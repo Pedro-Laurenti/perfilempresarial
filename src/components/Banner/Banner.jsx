@@ -1,4 +1,5 @@
-import back from '../../assets/back.svg'
+import back from '../../assets/back.svg';
+import ah from '../../assets/ahhhhhhh.png'
 import {Parallax} from 'react-parallax';
 
 const Banner = () => {
@@ -20,7 +21,7 @@ const Banner = () => {
             </div>
 
             <img
-                src="/src/assets/ahhhhhhh.png"
+                src={ah}
                 alt="glauco"
                 className='hidden md:block absolute left-0 bottom-[-100px] h-full'/>
 
