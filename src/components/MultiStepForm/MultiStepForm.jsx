@@ -12,6 +12,10 @@ import {
 import {Radar} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
 import html2canvas from 'html2canvas';
+import aguia from "../../assets/aguia.jpg"
+import gato from "../../assets/gato.jpg"
+import lobo from "../../assets/lobo.jpg"
+import tubarao from "../../assets/tubarao.jpg"
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
@@ -350,13 +354,13 @@ const MultiStepForm = () => {
                             <div className='flex flex-col gap-10'>
                                 <Link to="/personalidades">
                                     <img
-                                        src="/src/assets/aguia.jpg"
+                                        src={aguia}
                                         alt="Águia"
                                         className="rounded-lg shadow-md w-full hover:brightness-110 hover:cursor-pointer"/>
                                 </Link>
                                 <Link to="/personalidades">
                                     <img
-                                        src="/src/assets/lobo.jpg"
+                                        src={lobo}
                                         alt="Lobo"
                                         className="rounded-lg shadow-md w-full hover:brightness-125 hover:cursor-pointer"/>
                                 </Link>
@@ -364,13 +368,13 @@ const MultiStepForm = () => {
                             <div className='flex flex-col gap-10'>
                                 <Link to="/personalidades">
                                     <img
-                                        src="/src/assets/gato.jpg"
+                                        src={gato}
                                         alt="Gato"
                                         className="rounded-lg shadow-md w-full hover:brightness-125 hover:cursor-pointer"/>
                                 </Link>
                                 <Link to="/personalidades">
                                     <img
-                                        src="/src/assets/tubarao.jpg"
+                                        src={tubarao}
                                         alt="Tubarão"
                                         className="rounded-lg shadow-md w-full brightness-150 hover:brightness-200 hover:cursor-pointer"/>
                                 </Link>
