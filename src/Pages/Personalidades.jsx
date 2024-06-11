@@ -1,5 +1,4 @@
-import React from 'react';
-import {Navbar, Banner, MultiStepForm} from '../Components';
+import {Navbar} from '../Components';
 import {Link} from 'react-router-dom';
 
 const Personalidades = () => {

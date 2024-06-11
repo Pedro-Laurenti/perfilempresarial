@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import {useState, useRef} from 'react';
 import {BsArrowBarLeft, BsArrowBarRight, BsDownload} from 'react-icons/bs';
 import {
     Chart as ChartJS,
