@@ -1,4 +1,4 @@
-import back from '../../assets/back.svg'
+import back from '../../assets/back.svg';
 import {Parallax} from 'react-parallax';
 
 const Banner = () => {
