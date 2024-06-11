@@ -9,6 +9,10 @@ import logofav from "../assets/Logo.png"
 const Personalidades = () => {
     return (
         <div>
+            <Head>
+                <title>Personalidades</title>
+            </Head>
+
             <Navbar />
 
             <div className="w-full flex flex-row gap-10 p-10">
