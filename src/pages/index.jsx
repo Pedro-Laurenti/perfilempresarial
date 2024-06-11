@@ -1,4 +1,4 @@
-import {Navbar, Banner, MultiStepForm} from '../Components';
+import {Navbar, Banner, MultiStepForm} from '../components';
 import {BiArrowToRight} from 'react-icons/bi';
 import {Link} from 'react-router-dom';
 import { BsWhatsapp } from 'react-icons/bs';

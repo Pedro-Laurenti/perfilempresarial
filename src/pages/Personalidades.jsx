@@ -1,4 +1,4 @@
-import {Navbar} from '../Components';
+import {Navbar} from '../components';
 import {Link} from 'react-router-dom';
 
 const Personalidades = () => {

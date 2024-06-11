@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './styles/App.css'
-import Início from './Pages/Início';
-import Personalidades from './Pages/Personalidades'
+import Início from './pages/index';
+import Personalidades from './pages/Personalidades'
 
 
 function App() {
