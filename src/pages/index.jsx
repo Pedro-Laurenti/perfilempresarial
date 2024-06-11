@@ -2,10 +2,65 @@ import {Navbar, Banner, MultiStepForm} from '../components';
 import {BiArrowToRight} from 'react-icons/bi';
 import {Link} from 'react-router-dom';
 import { BsWhatsapp } from 'react-icons/bs';
+import Head from "next/head"
 
 const Início = () => {
     return (
+
         <div className='relative w-full min-h-screen text-white'>
+
+<Head>
+            <meta charset="UTF-8"/>
+            <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+            <meta property="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta property="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta name="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta name="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.png" />
+
+            <meta property="og:site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+            <meta property="site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+            <meta name="og:site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+            <meta name="site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+
+            <meta property="og:title" content="Teste Perfil Empresarial | CEO Glauco" />
+            <meta property="title" content="Teste Perfil Empresarial | CEO Glauco" />
+            <meta name="og:title" content="Teste Perfil Empresarial | CEO Glauco" />
+            <meta name="title" content="Teste Perfil Empresarial | CEO Glauco" />
+
+            <meta property="og:type" content="website" />
+            <meta property="type" content="website" />
+            <meta name="og:type" content="website" />
+            <meta name="type" content="website" />
+
+            <meta property="og:description" content="Quiz para definição de perfil profissional" />
+            <meta property='description' content='Quiz para definição de perfil profissional.' />
+            <meta name='og:description' content='Quiz para definição de perfil profissional.' />
+            <meta name='description' content='Quiz para definição de perfil profissional.' />
+
+            <meta property='og:subject' content='Teste Perfil Empresarial | CEO Glauco' />
+            <meta property='subject' content='Teste Perfil Empresarial | CEO Glauco' />
+            <meta name='og:subject' content='Teste Perfil Empresarial | CEO Glauco' />
+            <meta name='subject' content='Teste Perfil Empresarial | CEO Glauco' />
+
+            <meta property="og:image:secure_url" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta property="image:secure_url" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta name="og:image:secure_url" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta name="image:secure_url" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+
+            <meta property="og:image" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta property="og:image" itemprop="image" content="http://quiz.ceoglauco.com/logo.png" />
+            <meta property="image" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta property="image" itemprop="image" content="http://quiz.ceoglauco.com/logo.png" />
+            <meta name="og:image" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta name="og:image" itemprop="image" content="http://quiz.ceoglauco.com/logo.png" />
+            <meta name="image" itemprop="image" content="https://quiz.ceoglauco.com/logo.png" />
+            <meta name="image" itemprop="image" content="http://quiz.ceoglauco.com/logo.png" />
+
+            <title>Análise de Perfil Empresarial</title>
+        </Head>
+
             <Navbar className="z-50"/>
             <Banner/>
             <div className='w-full border-gradient'></div>
