@@ -1,5 +1,3 @@
-import React from 'react'
-import Logo from '../../assets/logo.svg'
 import back from '../../assets/back.svg'
 import {Parallax} from 'react-parallax';
 

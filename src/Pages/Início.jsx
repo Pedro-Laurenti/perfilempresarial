@@ -1,4 +1,3 @@
-import React from 'react';
 import {Navbar, Banner, MultiStepForm} from '../Components';
 import {BiArrowToRight} from 'react-icons/bi';
 import {Link} from 'react-router-dom';
