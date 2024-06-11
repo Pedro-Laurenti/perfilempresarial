@@ -106,7 +106,7 @@ const Personalidades = () => {
                     <p className="text-xl">A maneira mais precisa de identificar seu perfil comportamental é através de testes. Na internet tem vários. Dá uma procurada aí que você acha fácil.</p>
                 </section>
                 
-                <img src={logofav} alt="temp logo" className='hidden' />
+                <img src={logofav} alt="temp logo" className='hidden ' />
             </div>
         </div>
     );
