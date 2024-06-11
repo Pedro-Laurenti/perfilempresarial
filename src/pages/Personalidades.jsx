@@ -4,6 +4,7 @@ import aguia from "../assets/aguia.jpg"
 import gato from "../assets/gato.jpg"
 import lobo from "../assets/lobo.jpg"
 import tubarao from "../assets/tubarao.jpg"
+import logofav from "../assets/Logo.png"
 
 const Personalidades = () => {
     return (
@@ -104,6 +105,8 @@ const Personalidades = () => {
                     <p className="text-xl">Faça uma auto reflexão. Pense nos seus comportamentos, nos comportamentos dos animais e identifique qual tem mais características comuns com você.</p>
                     <p className="text-xl">A maneira mais precisa de identificar seu perfil comportamental é através de testes. Na internet tem vários. Dá uma procurada aí que você acha fácil.</p>
                 </section>
+                
+                <img src={logofav} alt="temp logo" className='hidden ' />
             </div>
         </div>
     );
