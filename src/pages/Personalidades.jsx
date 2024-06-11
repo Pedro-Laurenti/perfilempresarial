@@ -5,6 +5,7 @@ import gato from "../assets/gato.jpg"
 import lobo from "../assets/lobo.jpg"
 import tubarao from "../assets/tubarao.jpg"
 import logofav from "../assets/Logo.png"
+import Head from "next/head"
 
 const Personalidades = () => {
     return (
