@@ -16,8 +16,12 @@ import aguia from "../../assets/aguia.jpg"
 import gato from "../../assets/gato.jpg"
 import lobo from "../../assets/lobo.jpg"
 import tubarao from "../../assets/tubarao.jpg"
-import { FaCat, FaDog, FaFeather,  } from 'react-icons/fa';
-import { GiSharkFin } from "react-icons/gi";
+
+import aguiasvg from "../../assets/aguia.svg"
+import gatosvg from "../../assets/gato.svg"
+import lobosvg from "../../assets/Lobo.svg"
+import tubaraosvg from "../../assets/tuba.svg"
+
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
@@ -210,20 +214,20 @@ const MultiStepForm = () => {
 
     const summaries = {
         Águia: {
-            text: "Você é uma pessoa idealista, criativa e visionária. Gosta de explorar novas rotas e valoriza a liberdade e a inovação.",
-            image: <FaFeather size={64} />  // Adicione tamanho ou outras propriedades conforme necessário
+            text: "A águia simboliza o idealizador criativo que sempre busca inovar e explorar novas possibilidades. Com uma visão ampla e macro, ela prefere olhar além do óbvio, evitando o caminho convencional e de 'pisar no chão'. A águia valoriza a inovação e a originalidade, se destacando por sua capacidade de pensar fora da caixa e buscar resultados inéditos. Seu espírito livre e criativo permite que ela veja oportunidades onde outros veem obstáculos, inspirando aqueles ao seu redor com sua perspectiva única e elevada.",
+            image: <img src={aguiasvg} alt="aguia" />
         },
         Gato: {
-            text: "Você é uma pessoa divertida, espiritual e benéfica. Valoriza as memórias e a companhia das pessoas ao seu redor.",
-            image: <FaCat size={64} />
+            text: "O gato é a personificação do comunicador carismático e sociável, que se dá bem com todos ao seu redor. Ele aprecia o calor humano e tem uma habilidade natural para estabelecer conexões e manter relacionamentos. Sempre envolvido com amigos e familiares, o gato se destaca por sua capacidade de comunicar-se de maneira eficaz e empática. Sua presença é sempre bem-vinda em qualquer grupo, pois ele traz consigo uma atmosfera de camaradagem e compreensão, facilitando a interação e a coesão entre as pessoas.",
+            image: <img src={gatosvg} alt="gato" />
         },
         Lobo: {
-            text: "Você é uma pessoa confiável, meticulosa e previsível. Planejar e seguir regras é algo natural para você.",
-            image: <FaDog size={64} />
+            text: "O lobo é um indivíduo metódico e confiável, caracterizado por sua inteligência e capacidade de organização. Ele valoriza a precisão e o perfeccionismo, tomando decisões baseadas em sucessos anteriores para minimizar a probabilidade de erros. Esse comportamento conservador garante que ele seja visto como um líder estável e equilibrado. Seu senso de responsabilidade e pontualidade o tornam uma figura essencial em qualquer grupo, pois é alguém em quem se pode confiar para planejar e executar tarefas de maneira eficaz e segura.",
+            image: <img src={lobosvg} alt="lobo" />
         },
         Tubarão: {
-            text: "Você é uma pessoa focada, determinada e persistente. Gosta de estar na liderança e alcançar metas.",
-            image: <GiSharkFin size={64} />
+            text: "O tubarão é o executor determinado e competitivo, conhecido por sua extrema produtividade e eficiência. Ele não hesita em colocar a mão na massa e enfrentar desafios de frente. Confiante em suas habilidades, o tubarão detesta ficar para trás e sempre busca superar obstáculos para alcançar seus objetivos. Sua natureza independente e resoluta o torna um elemento crucial em qualquer equipe, pois ele garante que o trabalho seja concluído com competência e rapidez, sempre mantendo o foco em resultados concretos e tangíveis.",
+            image: <img src={tubaraosvg} alt="tubarao" />
         }
     };
 
@@ -312,7 +316,7 @@ const MultiStepForm = () => {
 
     const handleSave = () => {
         if (chartRef.current) {
-            html2canvas(chartRef.current).then((canvas) => {
+            html2canvas(chartRef.current.canvas).then((canvas) => {
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
                 link.download = 'grafico.png';
@@ -321,19 +325,13 @@ const MultiStepForm = () => {
         }
     };
 
-    const highestScoringGroup = Object.keys(results).reduce((a, b) => results[a] > results[b] ? a : b);
-
     const sortedResults = Object.entries(results).sort(([, a], [, b]) => b - a);
-    const topGroups = sortedResults.filter(([, percentage]) => percentage === sortedResults[0][1]);
-
-    const getTopGroups = () => {
-        const results = calculateResults();
-        const highestScore = Math.max(...Object.values(results));
-        const topGroups = Object.entries(results)
-            .filter(([group, score]) => score === highestScore)
-            .map(([group]) => group);
-        return topGroups;
-    };
+    
+    const topGroups = sortedResults.filter(([, percentage], index, arr) => {
+        if (index === 0) return true;
+        const diff = Math.abs(arr[0][1] - percentage);
+        return diff <= 2;
+    });
 
     return (
         <div className="w-full">
@@ -342,7 +340,12 @@ const MultiStepForm = () => {
                     <div className='w-full flex flex-col items-center sm:flex-row gap-20'>
                         <div className='w-full md:w-1/2'>
                             <h2 className="text-2xl mb-8">Vamos começar?</h2>
-                            <label className="block mb-10">
+                            <div className='mb-8'>
+                                <li>É permitido pular questões</li>
+                                <li>É permitido marcar mais de uma opção</li>
+                                <li>Resultados podem ser salvos e compartilhados</li>
+                            </div>
+                            <label className="block mb-5">
                                 Primeiro Nome:
                                 <input
                                     type="text"
@@ -439,11 +442,10 @@ const MultiStepForm = () => {
                             <div>
                                 <div className="w-full flex flex-row items-center justify-center">
                                     {topGroups.map(([group]) => (
-                                        <div className=' text-center gap-5'>
+                                        <div key={group} className='text-center gap-5'>
                                             <div key={group} className='border-2 border-sky-50 rounded-full p-4'>
                                                 {summaries[group].image}
                                             </div>
-                                            {group}
                                         </div>
                                     ))}
                                 </div>
@@ -463,14 +465,8 @@ const MultiStepForm = () => {
                             </button>
                         </div>
                         <div className='flex flex-col items-center'>
-                            <Radar
-                                data={data}
-                                options={options}
-                                ref={chartRef}
-                                className="h-full bg-sky-50 rounded-2xl"/>
-                            <button
-                                onClick={handleSave}
-                                className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-5 items-center hover:bg-sky-500 mt-5">Baixar gráfico
+                            <Radar ref={chartRef} data={data} options={options} className="h-full bg-sky-50 rounded-2xl" />
+                            <button onClick={handleSave} className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-5 items-center hover:bg-sky-500 mt-5">Baixar gráfico
                                 <BsDownload/></button>
                         </div>
                     </div>

@@ -121,8 +121,9 @@ const Início = () => {
                     </div>
                 </div>
             </div>
+
             <svg
-                className='fill-current stroke-zinc-50/10 stroke-1 bg-gradient-to-tr from-sky-950/20 to-transparent '
+                className='fill-current stroke-zinc-50/10 stroke-1 bg-gradient-to-tr from-sky-950/20 to-transparent hidden md:block '
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1341 832.5">
                 <g id="Camada_2" data-name="Camada 2">
@@ -146,6 +147,26 @@ const Início = () => {
                     </g>
                 </g>
             </svg>
+
+            <svg viewBox="0 0 581 1341" fill="none" xmlns="http://www.w3.org/2000/svg" className='fill-current stroke-zinc-50/10 stroke-2 bg-gradient-to-tr from-sky-950/20 to-transparent block md:hidden '>
+                <path d="M0 66.21L580.5 66.2099" />
+                <path d="M0 151.21L570.5 151.21" />
+                <path d="M0 321.21L560.5 321.21" />
+                <path d="M0 406.21L550.5 406.21" />
+                <path d="M0 576.21L540.5 576.21" />
+                <path d="M0 746.21L520.5 746.21" />
+                <path d="M0 831.21L520 831.21" />
+                <path d="M0 922L450.5 922" />
+                <path d="M0 1007L450.5 1007" />
+                <path d="M0 1092L430.5 1092" />
+                <path d="M0 1177L430.5 1177" />
+                <path d="M73.4399 0L73.44 1341" />
+                <path d="M158.5 0L158.5 1136" />
+                <path d="M243.56 0L243.56 1023" />
+                <path d="M328.62 0L328.62 897.5" />
+                <path d="M413.68 0L413.68 788.5" />
+            </svg>
+
         </div>
     );
 }
