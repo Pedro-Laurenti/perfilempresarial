@@ -4,7 +4,7 @@ import { FaTwitter, FaLinkedin, FaFacebook, FaLink } from 'react-icons/fa';
 const SimpleShareComponent = ({message}) => {
     const handleShare = (platform) => {
         const url = window.location.href;
-        const text = message || "Check out this awesome quiz!"; // Mensagem padrão
+        const text = message || "Eu estou participando!"; // Mensagem padrão
         const encodedText = encodeURIComponent(text);
         const encodedUrl = encodeURIComponent(url);
         let shareUrl: string | URL | undefined;
@@ -28,15 +28,15 @@ const SimpleShareComponent = ({message}) => {
 
     return (
         <div>
-            <div className="mt-10 flex flex-row gap-5">
-                <button onClick={() => handleShare('twitter')} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
-                    <FaTwitter />
+            <div className="mt-5 flex flex-row gap-5">
+                <button onClick={() => handleShare('twitter')} className="bg-sky-500/50 rounded-full flex px-4 py-4 items-center hover:bg-sky-500">
+                    <FaTwitter className='h-5 w-5' />
                 </button>
-                <button onClick={() => handleShare('linkedin')} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
-                    <FaLinkedin />
+                <button onClick={() => handleShare('linkedin')} className="bg-sky-500/50 rounded-full flex px-4 py-4 items-center hover:bg-sky-500">
+                    <FaLinkedin className='h-5 w-5' />
                 </button>
-                <button onClick={() => handleShare('facebook')} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
-                    <FaFacebook />
+                <button onClick={() => handleShare('facebook')} className="bg-sky-500/50 rounded-full flex px-4 py-4 items-center hover:bg-sky-500">
+                    <FaFacebook className='h-5 w-5' />
                 </button>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import {Navbar, Banner, MultiStepForm} from '../components';
+import {Navbar, Banner, MultiStepForm, Coutdown} from '../components';
 import {BiArrowToRight} from 'react-icons/bi';
 import {Link} from 'react-router-dom';
 import { BsWhatsapp } from 'react-icons/bs';
@@ -10,70 +10,86 @@ const Início = () => {
     const CURRENT_YEAR = new Date().getFullYear();
 
     return (
-
         <div className='relative w-full min-h-screen text-white'>
+            <Head>
+                <meta charset="UTF-8"/>
+                <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <Head>
-            <meta charset="UTF-8"/>
-            <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta property="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta property="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta name="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta name="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
 
-            <meta property="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta property="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta name="og:msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta name="msapplication-TileImage" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta property="og:site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta property="site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta name="og:site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta name="site_name" content="Teste Perfil Empresarial | CEO Glauco" />
 
-            <meta property="og:site_name" content="Teste Perfil Empresarial | CEO Glauco" />
-            <meta property="site_name" content="Teste Perfil Empresarial | CEO Glauco" />
-            <meta name="og:site_name" content="Teste Perfil Empresarial | CEO Glauco" />
-            <meta name="site_name" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta property="og:title" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta property="title" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta name="og:title" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta name="title" content="Teste Perfil Empresarial | CEO Glauco" />
 
-            <meta property="og:title" content="Teste Perfil Empresarial | CEO Glauco" />
-            <meta property="title" content="Teste Perfil Empresarial | CEO Glauco" />
-            <meta name="og:title" content="Teste Perfil Empresarial | CEO Glauco" />
-            <meta name="title" content="Teste Perfil Empresarial | CEO Glauco" />
+                <meta property="og:type" content="website" />
+                <meta property="type" content="website" />
+                <meta name="og:type" content="website" />
+                <meta name="type" content="website" />
 
-            <meta property="og:type" content="website" />
-            <meta property="type" content="website" />
-            <meta name="og:type" content="website" />
-            <meta name="type" content="website" />
+                <meta property="og:description" content="Quiz para definição de perfil profissional" />
+                <meta property='description' content='Quiz para definição de perfil profissional.' />
+                <meta name='og:description' content='Quiz para definição de perfil profissional.' />
+                <meta name='description' content='Quiz para definição de perfil profissional.' />
 
-            <meta property="og:description" content="Quiz para definição de perfil profissional" />
-            <meta property='description' content='Quiz para definição de perfil profissional.' />
-            <meta name='og:description' content='Quiz para definição de perfil profissional.' />
-            <meta name='description' content='Quiz para definição de perfil profissional.' />
+                <meta property='og:subject' content='Teste Perfil Empresarial | CEO Glauco' />
+                <meta property='subject' content='Teste Perfil Empresarial | CEO Glauco' />
+                <meta name='og:subject' content='Teste Perfil Empresarial | CEO Glauco' />
+                <meta name='subject' content='Teste Perfil Empresarial | CEO Glauco' />
 
-            <meta property='og:subject' content='Teste Perfil Empresarial | CEO Glauco' />
-            <meta property='subject' content='Teste Perfil Empresarial | CEO Glauco' />
-            <meta name='og:subject' content='Teste Perfil Empresarial | CEO Glauco' />
-            <meta name='subject' content='Teste Perfil Empresarial | CEO Glauco' />
+                <meta property="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta property="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta name="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta name="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
 
-            <meta property="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta property="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta name="og:image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta name="image:secure_url" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta property="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta property="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
+                <meta property="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta property="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
+                <meta name="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta name="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
+                <meta name="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
+                <meta name="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
 
-            <meta property="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta property="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
-            <meta property="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta property="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
-            <meta name="og:image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta name="og:image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
-            <meta name="image" itemProp="image" content="https://quiz.ceoglauco.com/logo.webp" />
-            <meta name="image" itemProp="image" content="http://quiz.ceoglauco.com/logo.webp" />
-
-            <title>Análise de Perfil Empresarial</title>
-        </Head>
+                <title>Análise de Perfil Empresarial</title>
+            </Head>
 
             <Navbar className="z-50"/>
-            <Banner/>
-            <div className='w-full border-gradient'></div>
+            <Banner toShare="toScroll" />
+            
 
             <div className='z-10 absolute w-full'>
+                <div className='border-gradient' />
+
+                <div className='grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-20 mx-5 md:mx-40 mt-10 items-center'>
+                    <div className='flex md:flex-col flex-row'>
+                        <div className='text-sky-500 font-black text-2xl' id="toScroll">
+                            <code>01.</code>
+                        </div>
+                        <div className='font-black text-2xl'>Evento:</div>
+                    </div>
+                    <div className='text-white font-medium text-4xl col-span-3'>
+                        Mentoria - Da Origem ao novo eu
+                    </div>
+                </div>
+
+                <div className='px-5 md:px-40 py-20 w-full border-gradient'>
+                    <Coutdown />
+                </div>
+
                 <div className='grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-20 mx-5 md:mx-40 mt-10 items-center'>
                     <div className='flex md:flex-col flex-row'>
                         <div className='text-sky-500 font-black text-2xl'>
-                            <code>01.</code>
+                            <code>02.</code>
                         </div>
                         <div className='font-black text-2xl'>Quiz:</div>
                     </div>
@@ -82,17 +98,15 @@ const Início = () => {
                     </div>
                 </div>
 
-                <div className='px-5 md:px-40 py-20 w-full'>
+                <div className='px-5 md:px-40 py-20 w-full border-gradient'>
                     <MultiStepForm/>
                 </div>
 
-                <div className='w-full border-gradient' />
-
                 <Link to="/personalidades" className='w-full'>
-                    <div className='grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-20 px-5 md:px-40 items-center py-40 hover:bg-slate-950'>
+                    <div className='grid grid-cols-1 bg-sky-950 md:grid-cols-4 gap-5 md:gap-20 px-5 md:px-40 items-center py-40 hover:bg-slate-950'>
                         <div className='flex md:flex-col flex-row'>
                             <div className='text-sky-500 font-black text-2xl'>
-                                <code>02.</code>
+                                <code>03.</code>
                             </div>
                             <div className='font-black text-2xl'>Tipos:</div>
                         </div>
@@ -102,8 +116,6 @@ const Início = () => {
                         </div> 
                     </div>
                 </Link>
-
-                
 
                 <div className='text-center px-5 md:px-40 py-20 w-full bg-sky-500 flex flex-col justify-center items-center text-2xl'>
                     Entre no nosso grupo para expandir sua network e receber atualizações importantes!
@@ -166,7 +178,6 @@ const Início = () => {
                 <path d="M328.62 0L328.62 897.5" />
                 <path d="M413.68 0L413.68 788.5" />
             </svg>
-
         </div>
     );
 }
