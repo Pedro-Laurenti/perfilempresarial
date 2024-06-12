@@ -9,6 +9,8 @@ import {
     Tooltip,
     Legend
 } from 'chart.js';
+
+import { FaFacebook, FaTwitter, FaLinkedin, FaLink } from 'react-icons/fa';
 import { Radar } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 import html2canvas from 'html2canvas';
@@ -215,19 +217,19 @@ const MultiStepForm = () => {
     const summaries = {
         Águia: {
             text: "A águia simboliza o idealizador criativo que sempre busca inovar e explorar novas possibilidades. Com uma visão ampla e macro, ela prefere olhar além do óbvio, evitando o caminho convencional e de 'pisar no chão'. A águia valoriza a inovação e a originalidade, se destacando por sua capacidade de pensar fora da caixa e buscar resultados inéditos. Seu espírito livre e criativo permite que ela veja oportunidades onde outros veem obstáculos, inspirando aqueles ao seu redor com sua perspectiva única e elevada.",
-            image: <img src={aguiasvg} alt="aguia" />
+            image: <img src={aguiasvg} alt="aguia" className=' w-20' />
         },
         Gato: {
             text: "O gato é a personificação do comunicador carismático e sociável, que se dá bem com todos ao seu redor. Ele aprecia o calor humano e tem uma habilidade natural para estabelecer conexões e manter relacionamentos. Sempre envolvido com amigos e familiares, o gato se destaca por sua capacidade de comunicar-se de maneira eficaz e empática. Sua presença é sempre bem-vinda em qualquer grupo, pois ele traz consigo uma atmosfera de camaradagem e compreensão, facilitando a interação e a coesão entre as pessoas.",
-            image: <img src={gatosvg} alt="gato" />
+            image: <img src={gatosvg} alt="gato" className=' w-20' />
         },
         Lobo: {
             text: "O lobo é um indivíduo metódico e confiável, caracterizado por sua inteligência e capacidade de organização. Ele valoriza a precisão e o perfeccionismo, tomando decisões baseadas em sucessos anteriores para minimizar a probabilidade de erros. Esse comportamento conservador garante que ele seja visto como um líder estável e equilibrado. Seu senso de responsabilidade e pontualidade o tornam uma figura essencial em qualquer grupo, pois é alguém em quem se pode confiar para planejar e executar tarefas de maneira eficaz e segura.",
-            image: <img src={lobosvg} alt="lobo" />
+            image: <img src={lobosvg} alt="lobo" className=' w-20' />
         },
         Tubarão: {
             text: "O tubarão é o executor determinado e competitivo, conhecido por sua extrema produtividade e eficiência. Ele não hesita em colocar a mão na massa e enfrentar desafios de frente. Confiante em suas habilidades, o tubarão detesta ficar para trás e sempre busca superar obstáculos para alcançar seus objetivos. Sua natureza independente e resoluta o torna um elemento crucial em qualquer equipe, pois ele garante que o trabalho seja concluído com competência e rapidez, sempre mantendo o foco em resultados concretos e tangíveis.",
-            image: <img src={tubaraosvg} alt="tubarao" />
+            image: <img src={tubaraosvg} alt="tubarao" className=' w-20' />
         }
     };
 
@@ -266,6 +268,7 @@ const MultiStepForm = () => {
             };
         });
     };
+
     const calculateResults = () => {
         const groupScores = {
             Águia: 0,
@@ -332,6 +335,45 @@ const MultiStepForm = () => {
         const diff = Math.abs(arr[0][1] - percentage);
         return diff <= 2;
     });
+
+    // Função para formatar os resultados como string
+    const formatResultsForSharing = (results) => {
+        return Object.entries(results)
+            .map(([group, percentage]) => `${group}: ${percentage.toFixed(2)}%`)
+            .join(', ');
+    };
+
+    const handleShare = (platform) => {
+        const url = window.location.href;
+        const formattedResults = formatResultsForSharing(results); // Resultados formatados
+        const text = `Dá uma olhada no resultado do meu quiz! ${formattedResults}`; // Incluindo os resultados formatados
+        const encodedText = encodeURIComponent(text);
+        const encodedUrl = encodeURIComponent(url);
+        let shareUrl;
+
+        switch (platform) {
+            case 'twitter':
+                shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`;
+                break;
+            case 'linkedin':
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}&summary=${encodedText}`;
+                break;
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
+                break;
+            default:
+                return;
+        }
+
+        window.open(shareUrl, '_blank');
+    };
+
+    // Function to copy link to clipboard
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(window.location.href)
+            .then(() => alert('Link copied to clipboard!'))
+            .catch(err => console.error('Failed to copy link: ', err));
+    };
 
     return (
         <div className="w-full">
@@ -437,7 +479,7 @@ const MultiStepForm = () => {
                     <div className='w-full grid xl:grid-cols-2 gap-5 grid-cols-1'>
                         <div>
                             <h2 className='text-2xl text-sky-500'>Parabéns, {formData.firstName}!</h2>
-                            <h2 className='text-2xl text-white mb-20'>Concluimos o quiz de 25 perguntas!</h2>
+                            <h2 className='text-2xl text-white mb-10'>Concluimos o quiz de 25 perguntas!</h2>
 
                             <div>
                                 <div className="w-full flex flex-row items-center justify-center">
@@ -452,7 +494,7 @@ const MultiStepForm = () => {
                                 <div className='mt-5'>
                                     {topGroups.map(([group]) => (
                                         <div key={group}>
-                                            <li className="text-left">{summaries[group].text}</li>
+                                            <li className="text-left mb-5">{summaries[group].text}</li>
                                         </div>
                                     ))}
                                 </div>
@@ -460,9 +502,32 @@ const MultiStepForm = () => {
                             <Link to={"/personalidades"} className="bg-slate-950/20 border border-white/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-gray-600 mt-10">
                                     Saiba mais de cada personalidade
                             </Link>
-                            <button onClick={handlePrevious} className="bg-slate-950/20 border border-white/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-gray-600 mt-10">
-                                <BsArrowBarLeft/>
-                            </button>
+
+                            
+                            <div className='flex flex-row justify-between'>
+
+                                <button onClick={handlePrevious} className="bg-slate-950/20 border border-white/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-gray-600 mt-10">
+                                    <BsArrowBarLeft/>
+                                </button>
+
+                                <div className="mt-10 flex flex-row gap-5">
+                                    <button onClick={() => handleShare('twitter')} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
+                                        <FaTwitter />
+                                    </button>
+                                    <button onClick={() => handleShare('linkedin')} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
+                                        <FaLinkedin />
+                                    </button>
+                                    <button onClick={() => handleShare('facebook')} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
+                                        <FaFacebook />
+                                    </button>
+                                    <button onClick={handleCopyLink} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
+                                        <FaLink />
+                                    </button>
+                                </div>
+                            
+                            </div>
+
+
                         </div>
                         <div className='flex flex-col items-center'>
                             <Radar ref={chartRef} data={data} options={options} className="h-full bg-sky-50 rounded-2xl" />
