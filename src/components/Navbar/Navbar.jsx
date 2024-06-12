@@ -10,13 +10,10 @@ const navigationLinks = [
     }, {
         title: 'Personalidades',
         href: '/personalidades'
-    }
-    // Add more links as needed
+    },
 ];
 
 const Navbar = () => {
-
-    // header animation scroll
 
     const [isTransparent,
         setIsTransparent] = useState(true);
@@ -76,12 +73,12 @@ const Navbar = () => {
         {
         isMenuOpen && (
             <div
-                className="fixed z-[500] flex flex-col items-end w-full h-screen gap-10 bg-black/50">
-                <div className="pt-20 bg-slate-800 h-full relative">
+                className="md:hidden fixed z-[500] flex flex-col items-end w-full h-screen gap-10 bg-black/50">
+                <div className=" pt-44 bg-slate-800 h-full relative">
                     {navigationLinks.map((link) => (
-                        <Link key={link.href} href={link.href}>
+                        <Link key={link.href} to={link.href}>
                             <h3
-                                className={`w-full py-5 px-40 hover:bg-slate-900 text-gray-300 hover:text-appBlue-100 text-2xl`}>
+                                className={`w-full py-5 px-40 hover:bg-slate-900 border-b border-b-slate-600 text-gray-300 hover:text-appBlue-100 text-2xl`}>
                                 {link.title}
                             </h3>
                         </Link>
