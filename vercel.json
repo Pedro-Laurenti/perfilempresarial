@@ -9,7 +9,7 @@
             "src": "client/package.json",
             "use": "@vercel/static-build",
             "config": {
-                "distDir": "client/dist"
+                "distDir": "dist"
             }
         }
     ],
@@ -22,5 +22,9 @@
             "src": "/(.*)",
             "dest": "client/dist/index.html"
         }
-    ]
+    ],
+    "buildCommand": "vite build",
+    "devCommand": "vite",
+    "outputDirectory": "dist",
+    "installCommand": "yarn install"
 }
