@@ -3,8 +3,9 @@ import backhor from '../../assets/backrotate.svg';
 import ah from '../../assets/glauco-removebg.png'
 import {Parallax} from 'react-parallax';
 import { SimpleShare } from '..';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import { FaArrowAltCircleDown } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 const Banner = ({ toShare }) => {
 
@@ -53,5 +54,9 @@ const Banner = ({ toShare }) => {
         </div>
     )
 }
+
+Banner.propTypes = {
+    toShare: PropTypes.any.isRequired,
+};
 
 export default Banner

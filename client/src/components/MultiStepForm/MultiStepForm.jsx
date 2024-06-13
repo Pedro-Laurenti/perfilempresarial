@@ -29,7 +29,14 @@ ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, 
 
 const MultiStepForm = () => {
     const [page, setPage] = useState(1);
-    const [formData, setFormData] = useState({ firstName: '', lastName: '', answers: {} });
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        answers: {} 
+    })
+
     const chartRef = useRef(null);
 
     const questions = [
@@ -109,7 +116,7 @@ const MultiStepForm = () => {
             question: "25. Eu penso que...",
             options: ['Não é fácil ficar encurralado', 'É preferível olhar, antes de pular', 'Duas cabeças pensam melhor que do que uma', 'Se você não tem condições de competir, não compita']
         }
-    ];
+    ]
 
     const optionGroupMapping = {
         'Idealista, criativo e visionário': 'Águia',
@@ -212,7 +219,7 @@ const MultiStepForm = () => {
         'É preferível olhar, antes de pular': 'Lobo',
         'Duas cabeças pensam melhor que do que uma': 'Gato',
         'Se você não tem condições de competir, não compita': 'Tubarão'
-    };
+    }
 
     const summaries = {
         Águia: {
@@ -231,12 +238,28 @@ const MultiStepForm = () => {
             text: "O tubarão é o executor determinado e competitivo, conhecido por sua extrema produtividade e eficiência. Ele não hesita em colocar a mão na massa e enfrentar desafios de frente. Confiante em suas habilidades, o tubarão detesta ficar para trás e sempre busca superar obstáculos para alcançar seus objetivos. Sua natureza independente e resoluta o torna um elemento crucial em qualquer equipe, pois ele garante que o trabalho seja concluído com competência e rapidez, sempre mantendo o foco em resultados concretos e tangíveis.",
             image: <img src={tubaraosvg} alt="tubarao" className=' w-20' />
         }
-    };
+    }
 
-    const handleNext = () => {
-        if (page === 1 && (!formData.firstName || !formData.lastName)) {
+    const handleNext = async () => {
+        if (page === 1 && (!formData.firstName || !formData.lastName || !formData.email || !formData.phone)) {
             alert('Por favor, preencha todos os campos.');
             return;
+        }
+        try {
+            const response = await fetch('http://localhost:5000/api/form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+            console.log('Resposta do Servidor:', data);
+            // Aqui você pode lidar com a resposta, como exibir uma mensagem de sucesso ou navegar para outra página
+        } catch (error) {
+            console.error('Erro ao enviar dados:', error);
+            // Aqui você pode lidar com o erro, como exibir uma mensagem de erro
         }
         setPage(page + 1);
     };
@@ -245,11 +268,19 @@ const MultiStepForm = () => {
         setPage(page - 1);
     };
 
-    const handleChange = (e) => {
+    const handleChange = (event) => {
+        const { name, value } = event.target;
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [name]: value
         });
+        handleAdditionalChange(name, value); // Chama a segunda função onChange
+    };
+
+    const handleAdditionalChange = (name, value) => {
+        // Lógica adicional a ser executada na mudança dos inputs
+        console.log(`Campo alterado: ${name}, Novo valor: ${value}`);
+        // Adicione aqui a lógica adicional que você precisa
     };
 
     const handleAnswerChange = (questionIndex, option) => {
@@ -396,14 +427,32 @@ const MultiStepForm = () => {
                                     onChange={handleChange}
                                     className="border border-gray-300 p-2 rounded-md w-full mt-4 bg-slate-950/20"/>
                             </label>
-                            <label className="block mb-2">
+                            <label className="block mb-5">
                                 Último Nome:
                                 <input
                                     type="text"
                                     name="lastName"
                                     value={formData.lastName}
                                     onChange={handleChange}
-                                    className="border border-gray-300 p-2 rounded-md w-full mb-10 mt-4 bg-slate-950/20"/>
+                                    className="border border-gray-300 p-2 rounded-md w-full mt-4 bg-slate-950/20"/>
+                            </label>
+                            <label className="block mb-5">
+                                E-mail:
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="border border-gray-300 p-2 rounded-md w-full mt-4 bg-slate-950/20"/>
+                            </label>
+                            <label className="block mb-10">
+                                Telefone:
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    className="border border-gray-300 p-2 rounded-md w-full mt-4 bg-slate-950/20"/>
                             </label>
                             <button
                                 onClick={handleNext}

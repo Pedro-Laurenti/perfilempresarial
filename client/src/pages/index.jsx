@@ -5,6 +5,7 @@ import { Link as ScrollLink } from 'react-scroll'
 import { BsWhatsapp } from 'react-icons/bs'
 import Head from "next/head"
 import config from '../../package.json'
+import { FaBell } from 'react-icons/fa'
 
 const Início = () => {
 
@@ -99,7 +100,13 @@ const Início = () => {
                             
                         </div>
 
+                        <Link to="https://www.youtube.com/@glaucoalvescosta/streams" className="bg-sky-500 hover:bg-sky-500/50 px-10 py-3 my-10 flex flex-row justify-between rounded-xl gap-5 items-center"><div>Ativar notificação</div> <FaBell /></Link>
+
+                        
+
+
                     </section>
+
 
                     <Coutdown />
 
