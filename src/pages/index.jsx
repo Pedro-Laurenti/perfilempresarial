@@ -1,9 +1,10 @@
-import {Navbar, Banner, MultiStepForm, Coutdown} from '../components';
-import {BiArrowToRight} from 'react-icons/bi';
-import {Link} from 'react-router-dom';
-import { BsWhatsapp } from 'react-icons/bs';
+import { Navbar, Banner, MultiStepForm, Coutdown } from '../components'
+import { BiArrowToRight } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
+import { Link as ScrollLink } from 'react-scroll'
+import { BsWhatsapp } from 'react-icons/bs'
 import Head from "next/head"
-import config from '../../package.json';
+import config from '../../package.json'
 
 const Início = () => {
 
@@ -75,15 +76,49 @@ const Início = () => {
                         <div className='text-sky-500 font-black text-2xl' id="toScroll">
                             <code>01.</code>
                         </div>
-                        <div className='font-black text-2xl'>Evento:</div>
+                        <div className='font-black text-2xl'>Eventos:</div>
                     </div>
                     <div className='text-white font-medium text-4xl col-span-3'>
-                        Mentoria - Da Origem ao novo eu
                     </div>
                 </div>
 
                 <div className='px-5 md:px-40 py-20 w-full border-gradient'>
+                    <section className='w-full flex flex-col items-center'>
+                        <h2 className='text-sky-500 font-medium text-4xl mb-10'>
+                            <span className='text-3xl font-light text-white'>Mentoria:</span> Da origem ao novo eu
+                        </h2>
+                        <div className='w-full md:w-3/4 text-xl text-left flex flex-col gap-6 mb-20'>
+                        
+                            <p className=''>Estamos muito felizes em receber todos vocês! Nossa jornada de transformação e autoconhecimento começa agora e promete mudar a sua vida em 8 encontros semanais.</p>
+                            <p className='font-bold'>Detalhes:</p>
+                            <ul className='list-disc flex flex-col gap-2'>
+                                <li><b className='text-sky-500'>Data e Hora:</b> 17/06/2024 às 13h00</li>
+                                <li><b className='text-sky-500'>Local Presencial:</b> Rua Manoel da Abadia, nº 116, Centro, Anápolis, GO</li>
+                                <li><b className='text-sky-500'>Transmissão ao Vivo:</b> Disponibilizada no YouTube e no site.</li>
+                            </ul>
+                            
+                        </div>
+
+                    </section>
+
                     <Coutdown />
+
+                    <p className='w-full text-center font-bold my-10'>Primeira conferência</p>
+
+                    <section className='w-full flex flex-col items-center'>
+                        <div className='w-full md:w-3/4 text-xl text-left flex flex-col gap-6 my-20'>
+                        <p className='font-bold'>Atividades Extras:</p>
+                            <ul className='list-disc flex flex-col gap-2'>
+                                <li>Sorteios semanais com diversos prêmios</li>
+                                <li>Certificado de presença para todos os participantes</li>
+                                <li>Chat disponível
+                                    <ScrollLink to={"toScrollWpp"} smooth={true} duration={1000} className='hover:cursor-pointer hover:text-sky-500 px-1 underline'>
+                                        no grupo
+                                    </ScrollLink>
+                                    aos domingos e segundas para tirar dúvidas</li>
+                            </ul>
+                        </div>
+                    </section>
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-20 mx-5 md:mx-40 mt-10 items-center'>
@@ -119,7 +154,7 @@ const Início = () => {
 
                 <div className='text-center px-5 md:px-40 py-20 w-full bg-sky-500 flex flex-col justify-center items-center text-2xl'>
                     Entre no nosso grupo para expandir sua network e receber atualizações importantes!
-                    <Link to="https://chat.whatsapp.com/Dh5Dx3xHbUOIqe5OHREE9t" target="_blank">
+                    <Link to="https://chat.whatsapp.com/Dh5Dx3xHbUOIqe5OHREE9t" id='toScrollWpp' target="_blank">
                         <button className='px-10 py-3 mt-5 rounded-xl bg-slate-900 hover:bg-slate-900/50'><BsWhatsapp /></button>
                     </Link>
                 </div>
