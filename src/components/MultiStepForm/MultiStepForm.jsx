@@ -319,7 +319,7 @@ const MultiStepForm = () => {
 
     const handleSave = () => {
         if (chartRef.current) {
-            html2canvas(chartRef.current.canvas).then((canvas) => {
+            html2canvas(chartRef.current).then((canvas) => {
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
                 link.download = 'grafico.png';
@@ -377,9 +377,9 @@ const MultiStepForm = () => {
 
     return (
         <div className="w-full">
-            <div className="w-full p-4">
+            <div className="px-5 md:px-22 py-12 w-full border-gradient">
                 {page === 1 && (
-                    <div className='w-full flex flex-col items-center sm:flex-row gap-20'>
+                    <div className='px-5 md:px-20 py-12 w-full flex flex-col items-center sm:flex-row gap-20'>
                         <div className='w-full md:w-1/2'>
                             <h2 className="text-2xl mb-8">Vamos começar?</h2>
                             <div className='mb-8'>
@@ -443,7 +443,7 @@ const MultiStepForm = () => {
                     </div>
                 )}
                 {page > 1 && page <= questions.length + 1 && questions.map((q, index) => (page === index + 2 && (
-                    <div key={index}>
+                    <div key={index} className='px-5 md:px-20 py-12'>
                         <div className="w-full h-4 bg-slate-950/20 rounded-full mb-5">
                             <div className="h-full bg-sky-500 rounded-full" style={progressBarStyle}></div>
                         </div>
@@ -476,7 +476,7 @@ const MultiStepForm = () => {
                     </div>
                 )))}
                 {page === questions.length + 2 && (
-                    <div className='w-full grid xl:grid-cols-2 gap-5 grid-cols-1'>
+                    <div ref={chartRef} className='w-full px-5 md:px-20 py-12 grid xl:grid-cols-2 gap-5 grid-cols-1 bg-slate-900 border border-sky-500/30 rounded-xl'>
                         <div>
                             <h2 className='text-2xl text-sky-500'>Parabéns, {formData.firstName}!</h2>
                             <h2 className='text-2xl text-white mb-10'>Concluimos o quiz de 25 perguntas!</h2>
@@ -504,11 +504,15 @@ const MultiStepForm = () => {
                             </Link>
 
                             
-                            <div className='flex flex-row justify-between'>
-
-                                <button onClick={handlePrevious} className="bg-slate-950/20 border border-white/50 rounded-md flex px-5 py-2 gap-20 items-center hover:bg-gray-600 mt-10">
-                                    <BsArrowBarLeft/>
-                                </button>
+                            <div className='flex flex-col lg:flex-row justify-between items-center my-10'>
+                                
+                                <div className='flex flex-row gap-3'>
+                                    <button onClick={handlePrevious} className="bg-slate-950/20 border border-white/50 rounded-md flex px-5 py-2 items-center hover:bg-gray-600 mt-10">
+                                        <BsArrowBarLeft/>
+                                    </button>
+                                    <button onClick={handleSave} className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-5 items-center hover:bg-sky-500 mt-10">Baixar gráfico
+                                    <BsDownload/></button>
+                                </div>
 
                                 <div className="mt-10 flex flex-row gap-5">
                                     <button onClick={() => handleShare('twitter')} className="bg-sky-500/50 rounded-full flex px-5 py-5 items-center hover:bg-sky-500">
@@ -530,9 +534,7 @@ const MultiStepForm = () => {
 
                         </div>
                         <div className='flex flex-col items-center'>
-                            <Radar ref={chartRef} data={data} options={options} className="h-full bg-sky-50 rounded-2xl" />
-                            <button onClick={handleSave} className="bg-sky-500/50 rounded-md flex px-5 py-2 gap-5 items-center hover:bg-sky-500 mt-5">Baixar gráfico
-                                <BsDownload/></button>
+                            <Radar data={data} options={options} className="h-full bg-sky-50 rounded-2xl" />
                         </div>
                     </div>
                 )}

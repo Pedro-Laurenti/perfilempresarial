@@ -133,9 +133,7 @@ const Início = () => {
                     </div>
                 </div>
 
-                <div className='px-5 md:px-40 py-20 w-full border-gradient'>
-                    <MultiStepForm/>
-                </div>
+                <MultiStepForm/>
 
                 <Link to="/personalidades" className='w-full'>
                     <div className='grid grid-cols-1 bg-sky-950 md:grid-cols-4 gap-5 md:gap-20 px-5 md:px-40 items-center py-40 hover:bg-slate-950'>
