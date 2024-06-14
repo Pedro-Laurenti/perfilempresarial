@@ -13,7 +13,7 @@
         }
     ],
     "buildCommand": "nodemon server.js",
-    "installCommand": "yarn install",
-    "outputDirectory": ".",
-    "devCommand": "run dev"
+    "installCommand": "npm install",
+    "outputDirectory": "",
+    "devCommand": "npm run start"
 }
