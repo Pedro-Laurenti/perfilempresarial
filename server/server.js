@@ -1,9 +1,11 @@
-// server/server.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Carregar variáveis de ambiente do .env.local
+dotenv.config({ path: '.env.local' });
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -11,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://tlkoperacional:JmnKU36FjC4EEz7C@ceoglaucoleads.nereuqw.mongodb.net/', {});
+mongoose.connect(process.env.MONGO_URI, {});
 
 const connection = mongoose.connection;
 connection.once('open', () => {
