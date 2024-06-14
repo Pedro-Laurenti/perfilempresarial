@@ -1,0 +1,20 @@
+{
+    "projects": [
+        {
+            "src": "./client",
+            "use": "@vercel/static",
+            "config": {
+                "distDir": "dist"
+            }
+        }, {
+            "src": "./server/server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/api"
+        }
+    ]
+}
