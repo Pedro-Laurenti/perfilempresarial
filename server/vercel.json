@@ -14,6 +14,6 @@
     ],
     "buildCommand": "nodemon server.js",
     "installCommand": "npm install",
-    "outputDirectory": "",
+    "outputDirectory": ".",
     "devCommand": "npm run start"
 }
