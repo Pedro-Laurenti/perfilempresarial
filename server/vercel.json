@@ -11,5 +11,9 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ]
+    ],
+    "buildCommand": "nodemon server.js",
+    "installCommand": "yarn install",
+    "outputDirectory": ".",
+    "devCommand": "run dev"
 }
